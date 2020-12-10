@@ -1,0 +1,40 @@
+{
+
+   "details": [
+       {
+			"Experiment": "Astable and monostable multivibrator using IC 555.",     
+			"Lab": "Analog Electronics",               
+			"Discipline": "Electronics and Communications",				 
+			"Technology": "HTML, JavaScript, CSS"         
+       }
+   ],
+
+   "developer": [
+       {       
+      "Developer": "Prof. RS Anand",         
+      "Institute": "Indian Institute of Technology Roorkee, Roorkee",         
+      "InstituteAcronym": "IITR"   
+       }
+   ],
+
+   "contributer": [
+       {       
+			"Contributer": "Jasbir Singh",             
+      "Institute": "Indian Institute of Technology Roorkee, Roorkee",               
+			"InstituteAcronym": "IITR"         
+       },
+
+       {       
+			"Contributer": "Rajeev Kumar",              
+      "Institute": "Indian Institute of Technology Roorkee, Roorkee",               
+			"InstituteAcronym": "IITR"         
+       },
+
+       {       
+			"Contributer": "Priyanshi Agarwal",             
+      "Institute": "Indian Institute of Technology Roorkee, Roorkee",               
+			"InstituteAcronym": "IITR"         
+       }
+   ]
+
+}
