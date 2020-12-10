@@ -1,1 +1,1 @@
-### Aim of the experiment
+#### To study astable and monostable multivibrator using IC 555.

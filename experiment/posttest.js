@@ -5,126 +5,194 @@
 /////////////////////////////////////////////////////////////////////////////
 
 (function() {
-    function buildQuiz() {
-        // we'll need a place to store the HTML output
-        const output = [];
+  function buildQuiz() {
+    // we'll need a place to store the HTML output
+    const output = [];
 
-        // for each question...
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-            // we'll want to store the list of answer choices
-            const answers = [];
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // we'll want to store the list of answer choices
+      const answers = [];
 
-            // and for each available answer...
-            for (letter in currentQuestion.answers) {
-                // ...add an HTML radio button
-                answers.push(
-                    `<label>
-          <input type="radio" name="question${questionNumber}" value="${letter}">
-          ${letter} :
-          ${currentQuestion.answers[letter]}
-        </label>`
-                );
-            }
+      // and for each available answer...
+      for (letter in currentQuestion.answers) {
+        // ...add an HTML radio button
+        answers.push(
+          `<label>
+            <input type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
 
-            // add this question and its answers to the output
-            output.push(
-                `<div class="question"> ${currentQuestion.question} </div>
-      <div class="answers"> ${answers.join("")} </div>`
-            );
-        });
+      // add this question and its answers to the output
+      output.push(
+        `<div class="question"> ${currentQuestion.question} </div>
+        <div class="answers"> ${answers.join("")} </div>`
+      );
+    });
 
-        // finally combine our output list into one string of HTML and put it on the page
-        quizContainer.innerHTML = output.join("");
-    }
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join("");
+  }
 
-    function showResults() {
-        // gather answer containers from our quiz
-        const answerContainers = quizContainer.querySelectorAll(".answers");
+  function showResults() {
+    // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll(".answers");
 
-        // keep track of user's answers
-        let numCorrect = 0;
+    // keep track of user's answers
+    let numCorrect = 0;
 
-        // for each question...
-        myQuestions.forEach((currentQuestion, questionNumber) => {
-            // find selected answer
-            const answerContainer = answerContainers[questionNumber];
-            const selector = `input[name=question${questionNumber}]:checked`;
-            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-            // if answer is correct
-            if (userAnswer === currentQuestion.correctAnswer) {
-                // add to the number of correct answers
-                numCorrect++;
+      // if answer is correct
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        numCorrect++;
 
-                // color the answers green
-                //answerContainers[questionNumber].style.color = "lightgreen";
-            } else {
-                // if answer is wrong or blank
-                // color the answers red
-                answerContainers[questionNumber].style.color = "red";
-            }
-        });
+        // color the answers green
+        //answerContainers[questionNumber].style.color = "lightgreen";
+      } else {
+        // if answer is wrong or blank
+        // color the answers red
+        answerContainers[questionNumber].style.color = "red";
+      }
+    });
 
-        // show number of correct answers out of total
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-    }
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
 
-    const quizContainer = document.getElementById("quiz");
-    const resultsContainer = document.getElementById("results");
-    const submitButton = document.getElementById("submit");
+  const quizContainer = document.getElementById("quiz");
+  const resultsContainer = document.getElementById("results");
+  const submitButton = document.getElementById("submit");
+ 
 
+/////////////////////////////////////////////////////////////////////////////
 
-    /////////////////////////////////////////////////////////////////////////////
+/////////////////////// Do not modify the above code ////////////////////////
 
-    /////////////////////// Do not modify the above code ////////////////////////
-
-    /////////////////////////////////////////////////////////////////////////////
-
-
+/////////////////////////////////////////////////////////////////////////////
 
 
 
 
-    /////////////// Write the MCQ below in the exactly same described format ///////////////
 
 
-    const myQuestions = [{
-            question: "1.This is a sample question:", ///// Write the question inside double quotes
-            answers: {
-                a: "This is a sample answer A", ///// Write the option 1 inside double quotes
-                b: "This is a sample answer B", ///// Write the option 2 inside double quotes
-            },
-            correctAnswer: "a" ///// Write the correct option inside double quotes
-        },
+/////////////// Write the MCQ below in the exactly same described format ///////////////
 
+
+  const myQuestions = [
     {
-      question: "<img src='images/8.PNG'><br>Identify the location of Secondary electron detector",  ///// Write the question inside double quotes
+      question: "Multivibrator in which circuit is stable in either state and can be flipped from one state to other by an external trigger pulse is termed as __________",  ///// Write the question inside double quotes
       answers: {
-        a: "<img src='images/1b.png'>",                  ///// Write the option 1 inside double quotes
-        b: "<img src='images/1a.png'>",                  ///// Write the option 2 inside double quotes
-        c: "<img src='images/1c.PNG'>",      },
+        a: "Astable multivibrator",                  ///// Write the option 1 inside double quotes
+        b: "Monostable multivibrator",                  ///// Write the option 2 inside double quotes
+        c: "Bistable multivibrator",                  ///// Write the option 3 inside double quotes
+        d: "None of the above"                   ///// Write the option 4 inside double quotes
+      },
       correctAnswer: "c"                ///// Write the correct option inside double quotes
     },
 
-
-        
-    ];
-
-
-
-
-    /////////////////////////////////////////////////////////////////////////////
-
-    /////////////////////// Do not modify the below code ////////////////////////
-
-    /////////////////////////////////////////////////////////////////////////////
+    {
+      question: "Popular astable circuit is composed of __________",  ///// Write the question inside double quotes
+      answers: {
+        a: "One inverter",                  ///// Write the option 1 inside double quotes
+        b: "Two inverters",                  ///// Write the option 2 inside double quotes
+        c: "One buffer",                  ///// Write the option 3 inside double quotes
+        d: "Two buffers"                   ///// Write the option 4 inside double quotes
+      },
+      correctAnswer: "b"                ///// Write the correct option inside double quotes
+    }, 
 
 
-    // display quiz right away
-    buildQuiz();
+    {
+      question: "Circuit which consist of a quasi-stable state is called __________",  ///// Write the question inside double quotes
+      answers: {
+        a: "Bistable circuit",                  ///// Write the option 1 inside double quotes
+        b: "Monostable circuit",                  ///// Write the option 2 inside double quotes
+        c: "Tristate circuit",                  ///// Write the option 3 inside double quotes
+        d: "None of the above"                   ///// Write the option 4 inside double quotes
+      },
+      correctAnswer: "b"                ///// Write the correct option inside double quotes
+    },
 
-    // on submit, show results
-    submitButton.addEventListener("click", showResults);
+
+
+    {
+      question: "Capacitor discharge interval in monostable circuits is known as __________",  ///// Write the question inside double quotes
+      answers: {
+        a: "Refresh time",                  ///// Write the option 1 inside double quotes
+        b: "Recovery time",                  ///// Write the option 2 inside double quotes
+        c: "Dynamic time",                  ///// Write the option 3 inside double quotes
+        d: "Static time"                   ///// Write the option 4 inside double quotes
+      },
+      correctAnswer: "b"                ///// Write the correct option inside double quotes
+    },
+
+
+    {
+      question: "Multivibrator which can produce a very short pulse or a much longer rectangular shaped waveform whose leading edge rises in time with externally applied trigger pulse is called __________",  ///// Write the question inside double quotes
+      answers: {
+        a: "Astable multivibrator",                  ///// Write the option 1 inside double quotes
+        b: "Bistable multivibrator",                  ///// Write the option 2 inside double quotes
+        c: "Monostable multivibrator",                  ///// Write the option 3 inside double quotes
+        d: "Tristable multivibrator"                   ///// Write the option 4 inside double quotes
+      },
+      correctAnswer: "c"                ///// Write the correct option inside double quotes
+    },                                 ///// To add more questions, copy the section below 
+    									                  ///// this line
+
+
+    /* To add more MCQ's, copy the below section, starting from open curly braces ( { )
+        till closing curly braces comma ( }, )
+
+        and paste it below the curly braces comma ( below correct answer }, ) of above 
+        question
+
+    Copy below section
+
+    {
+      question: "This is question n?",
+      answers: {
+        a: "Option 1",
+        b: "Option 2",
+        c: "Option 3",
+        d: "Option 4"
+      },
+      correctAnswer: "c"
+    },
+
+    Copy above section
+
+    */
+
+
+
+
+  ];
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+/////////////////////// Do not modify the below code ////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+  // display quiz right away
+  buildQuiz();
+
+  // on submit, show results
+  submitButton.addEventListener("click", showResults);
 })();
 
 
