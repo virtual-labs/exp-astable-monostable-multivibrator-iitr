@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="EMF Generation">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <title>Astable Multivibrator</title>
+
+  <script src="graph.ob.js"></script>
+  <script src="graph_use.ob.js"></script>
+  <script src="graph_line_use.ob.js"></script>
+  <link rel="stylesheet" href="demo1.css">
+    
+  <style type="text/css">
+  body {
+    background-color: #ECEFF4;
+
+}
+h1 {
+    color: maroon;
+  
+} 
+
+   #wrapper {
+  width:100%;
+}
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: linen;
+    min-width: 750px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: red;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+.canvas{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 3px;   
+  border-color: #000000; 
+  background-color: grey;
+  z-index: 20;
+}
+</style>
+</head>
+<body outline:black;>
+
+<center>
+<h1><u>Astable Multivibrator</u></h1>
+</center>
+<br/>
+
+
+<div class="dropdown" style="left:40px;">
+<button onclick="dropdown()" class="dropbtn">Instructions</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">><b>1) Connect the Supply to input terminals.</b><br/><br/>
+                    <b>2) Connect output terminals to the CRO input.</b><br/><br/>
+                    <b>3) Press the "check" button to check whether the connections are correct or not.</b><br/><br/>
+                    <b>4) Vary the resistance using the slider after making sure the connections are correct. Press the calculate button to determine the pulse width(&tau;<sub>P</sub>).</b><br/><br/>
+                    <b>5) Observe the capacitor and output characteristics for each value of pulse width.</b><br/><br/>
+                    <b>6) Press "Add to table" to add the quantities to the table. </b><br/><br/>
+                    <b>7) Repeat steps 4-6 for different values of resistance.</b><br/><br/>
+                    <b>8) Press the "reset" button whenever you want to refresh your simulator.</b><br/><br/>
+                    
+                   
+                    
+                    </a>
+</div>
+</div>
+
+<div class="jtk-demo-main" >
+            <!-- demo -->
+            <div class="jtk-demo-canvas canvas-wide animation-demo jtk-surface jtk-surface-nopan" id="canvas">
+                <div class="littledot" id="ld1"></br><a href="#" class="cmdLink detach" rel="ld1">L<sub>1</sub></a></div>
+                <div class="littledot" id="ld2"></br><a href="#" class="cmdLink detach" rel="ld2">L<sub>2</sub></a></div>
+                <div class="littledot" id="ld3"></br><a href="#" class="cmdLink detach" rel="ld3">L<sub>3</sub></a></div>
+                <div class="littledot" id="ld4"></br><a href="#" class="cmdLink detach" rel="ld4">l<sub>4</sub></a></div>
+                <div class="littledot" id="ld5"></br><a href="#" class="cmdLink detach" rel="ld5">L<sub>5</sub></a></div>
+                <div class="littledot" id="ld6"></br><a href="#" class="cmdLink detach" rel="ld6">L<sub>6</sub></a></div>
+                <div class="littledot" id="ld7"></br><a href="#" class="cmdLink detach" rel="ld7">L<sub>7</sub></a></div>
+                <div class="littledot" id="ld8"></br><a href="#" class="cmdLink detach" rel="ld8">l<sub>8</sub></a></div>
+                
+
+
+            <!-- /demo -->
+            <!-- explanation -->
+           
+            <!-- /explanation -->
+        </div>
+
+<div id="wrapper" style="position:absolute; border: 2px solid; top: 160px; ;width:1200px;height:1000px;left:20px">
+  <div style="position:absolute;left:20px;top:500px;" >
+    <table width="0%" border="0" > 
+    <form id="myForm">
+                   <tr align="center">
+                     <td><label><b><font color="#0076EC" size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select Resistance(K) &nbsp;&nbsp;=&nbsp; </font></b></label></td>
+                     <td>
+                      <input type="range" id="range" min="1.0" max="3.9" step="0.1">
+                                       
+        
+                   </form>
+                   
+   
+    <td>             
+   <input style=" background: #27d447 !important;height:50px; width:100px" id = "calc" type = "button" value = " Calculate " onclick="cal()">
+   </td>
+    </tr>
+   </table>
+   </div>
+
+
+<div style="position:absolute;left:150px; top: 600px;">
+<table align="center" width="0%" border="1">
+  <tr>
+    <td><b><font color="#FF0000" size="4">Resistance(R<sub>A</sub>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
+      <b><span id="demo"></span></b> <font color="#FF0000  " size="4">K&ohm;</font> </td>
+</tr>
+<tr>
+    <td><b><font color="#FF0000" size="4">Capacitance(C)&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
+<b>0.01</b><font color="#FF0000  " size="4">&micro;F</font> </td>
+</tr>
+<tr>
+    <td><b><font color="#FF0000" size="4">Pulse Width(&tau;<sub>p</sub>)&nbsp;=</font></b>&nbsp;&nbsp;&nbsp;&nbsp;<Label id="result">0</Label>&nbsp;<font color="#FF0000  " size="4">ms</font> </td>
+</tr>
+ <tr>
+                  <td align="center"><label><input style=" background: #27d447 !important;height:50px; width:100px" id = "add" type = "button" value = " Add to table " onclick="Add()"></label></td>
+                  </tr>
+                </table>
+</div>
+
+<div style="position:absolute;top:50px; left:50px;"  >
+
+    <img src="circuit.png"  width=450px; height=350px;/>
+  
+  
+  </div>
+
+
+
+
+
+
+</br></br></br></br></br></br></br></br></br></br></br></br>
+    <div id="tblwrap" style="position:absolute; border: 2px solid #3385ff;top:450px;width:500px;height:500px;left:625px">
+                <div style="position:absolute; font-size:16px;background-color: #3385ff;  top:0px;left:0px; width:500px; height:50px;font-weight: bold;"><p style=" color:white"> 
+
+                    EXPERIMENTAL TABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input style=" background: #27d447 !important;height:30px; width:100px" id = "pr" type = "button" value = " Print  " onclick="print()"></p>
+
+                  
+
+
+                  
+
+
+
+                </div>
+               
+                <div id="table" style="background-color: #ECEFF4;;; position:absolute; top:50px;width:500px;height:238px;left:0px; overflow-y: auto;">
+
+                    <table id="mytable" width="500" border="1" >
+
+                        <tr>
+                            <th>SN.</th>
+                            <th>Resistance<br>(R<sub>A</sub>)</th>
+                            <th>Resistance<br>(R<sub>B</sub>)</th>
+                            <th>Capacitance<br>(C)</th>
+                            <th>Pulse width<br>(&tau;<sub>p</sub>)</th>
+                            <th>Time constant<br>(T)</th>
+                            <th>Duty cycle<br>(%)</th>
+                            <th>Freq<br>(F)</th>
+                           
+                        
+
+                        </tr>
+                        
+                    </table>
+                  
+                </div>
+    </div>
+
+
+
+
+
+            
+  
+ <br/>
+
+<br/>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div style="position: absolute; border: 2px solid #2074F1; top: 20px; width: 500px; height: 400px; left: 625px;">
+    <img src="ext.png" style="position: relative; left: -70px; top: 100px; z-index: -10;">
+    <div style="position:absolute; font-size:16px;background-color: #3385ff;  top:0px;left:0px; width:500px; height:40px;font-weight: bold;">
+      <p style="text-align:center; color:rgb(66, 62, 62)"> <b> GRAPH PLOT</b></p></div>
+        
+      <div id="l1" style="position: absolute; background-image: url(cro.png); background-position: center; background-repeat: no-repeat; top: 40px; width: 500px; height: 180px;">
+        
+      </div>
+        <div id="l2" style="position: absolute; background-image: url(cro.png); background-position: center; background-repeat: no-repeat; top:220px; width: 500px; height: 180px;">
+
+
+
+      </div> 
+ 
+ 
+
+  </div>
+  
+
+<div style="position:absolute;left:230px;top:430px;">
+            <button id="check-button" >Check</button>
+            <input id="reset" type="reset" onclick="window.location.href = 'index.html';" value="Reset">
+        </div>
+
+</main> 
+  </div>
+
+
+
+  <script>    
+           document.getElementById('range').disabled = true;
+  
+
+                document.getElementById("pr").disabled = true;
+           document.getElementById("calc").disabled = true;
+           document.getElementById("add").disabled = true;
+  
+  </script> 
+
+
+<script src="jsplumb1.js"></script>
+
+    <script src="demo1.js"></script>              
+</body>
+</div>
+
+</html>
+
