@@ -1,1 +1,46 @@
-[{"question":"Multivibrator in which circuit is stable in either state and can be flipped from one state to other by an external trigger pulse is termed as __________","answers":{"a":"Astable multivibrator","b":"Monostable multivibrator","c":"Bistable multivibrator","d":"None of the above"},"correctAnswer":"c"},{"question":"Popular astable circuit is composed of __________","answers":{"a":"One inverter","b":"Two inverters","c":"One buffer","d":"Two buffers"},"correctAnswer":"b"},{"question":"Circuit which consist of a quasi-stable state is called __________","answers":{"a":"Bistable circuit","b":"Monostable circuit","c":"Tristate circuit","d":"None of the above"},"correctAnswer":"b"},{"question":"Capacitor discharge interval in monostable circuits is known as __________","answers":{"a":"Refresh time","b":"Recovery time","c":"Dynamic time","d":"Static time"},"correctAnswer":"b"},{"question":"Multivibrator which can produce a very short pulse or a much longer rectangular shaped waveform whose leading edge rises in time with externally applied trigger pulse is called __________","answers":{"a":"Astable multivibrator","b":"Bistable multivibrator","c":"Monostable multivibrator","d":"Tristable multivibrator"},"correctAnswer":"c"}]
+[{
+	"question": "Multivibrator in which circuit is stable in either state and can be flipped from one state to other by an external trigger pulse is termed as __________",
+	"answers": {
+		"a": "Astable multivibrator",
+		"b": "Monostable multivibrator",
+		"c": "Bistable multivibrator",
+		"d": "None of the above"
+	},
+	"correctAnswer": "c"
+}, {
+	"question": "Popular astable circuit is composed of __________",
+	"answers": {
+		"a": "One inverter",
+		"b": "Two inverters",
+		"c": "One buffer",
+		"d": "Two buffers"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "Circuit which consist of a quasi-stable state is called __________",
+	"answers": {
+		"a": "Bistable circuit",
+		"b": "Monostable circuit",
+		"c": "Tristate circuit",
+		"d": "None of the above"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "Capacitor discharge interval in monostable circuits is known as __________",
+	"answers": {
+		"a": "Refresh time",
+		"b": "Recovery time",
+		"c": "Dynamic time",
+		"d": "Static time"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "Multivibrator which can produce a very short pulse or a much longer rectangular shaped waveform whose leading edge rises in time with externally applied trigger pulse is called __________",
+	"answers": {
+		"a": "Astable multivibrator",
+		"b": "Bistable multivibrator",
+		"c": "Monostable multivibrator",
+		"d": "Tristable multivibrator"
+	},
+	"correctAnswer": "c"
+}]
