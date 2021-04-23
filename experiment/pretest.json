@@ -1,0 +1,46 @@
+[{
+	"question": "In astable mode of 555 timer, control pin is decoupled by ____________",
+	"answers": {
+		"a": "Resistor",
+		"b": "Inductor",
+		"c": "Capacitor",
+		"d": "Supply"
+	},
+	"correctAnswer": "c"
+}, {
+	"question": "555 timer consists basically of __________",
+	"answers": {
+		"a": "One comparator",
+		"b": "Two comparators",
+		"c": "Three comparators",
+		"d": "Four comparators"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "An integrated circuit which is used in a Variety of timer, pulse generation, and oscillator applications is",
+	"answers": {
+		"a": "555 timer",
+		"b": "IC 7806",
+		"c": "IC 7909",
+		"d": "IC 2251"
+	},
+	"correctAnswer": "a"
+}, {
+	"question": "When 555 timer is configured as an astable multi Vibrator, its duty cycle is determined by __________",
+	"answers": {
+		"a": "Internal resistors",
+		"b": "External resistors",
+		"c": "Capacitors",
+		"d": "Inductors"
+	},
+	"correctAnswer": "b"
+}, {
+	"question": "Astable mode is also called __________",
+	"answers": {
+		"a": "Bounded mode",
+		"b": "Free running mode",
+		"c": "Single level mode",
+		"d": "Neutral mode"
+	},
+	"correctAnswer": "b"
+}]
