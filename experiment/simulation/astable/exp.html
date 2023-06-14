@@ -1,0 +1,527 @@
+<html>
+
+<head>
+	<title>Reading values</title>
+	<link rel="stylesheet" href="./src/expstyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<style>
+		body {
+			background: white;
+			height: 120vh;
+		}
+
+		.button {
+			background: #228b22;
+			border: none;
+			padding: 5px 20px;
+			border-radius: 3px;
+			color: white;
+		}
+
+		.button:hover {
+			background: #6B8E23;
+			border: none;
+			color: black;
+		}
+
+		.instruct {
+			margin-left: 96%;
+			margin-top: -20px;
+		}
+	</style>
+</head>
+
+<body style="width:95em">
+	<div id="se-pre-con">
+		<div class="load">
+			<!-- <p>You can read the values of the experiment</p> -->
+			<img src="./images/load.gif">
+			<p>Please wait...</p>
+		</div>
+	</div>
+	<div class="exp">
+		<p style="background-color: #044ca3;color:white;font-size:30px;text-align:center;border-radius:5px">Astable
+			Multivibrator</p>
+		<a id="myBtn" href="#" style="position: absolute;left: 91.8%;"><button id="myBtn" class="btn btn-danger"
+				style="margin-top: -6px;">Instructions</button></a>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script src="dataset1.js"></script>
+		<script src="dataset2.js"></script>
+		<script src="dataset3.js"></script>
+		<script src="dataset4.js"></script>
+		<script src="dataset5.js"></script>
+		<script src="dataset6.js"></script>
+		<script src="dataset7.js"></script>
+		<script src="dataset8.js"></script>
+		<script src="dataset9.js"></script>
+		<script src="dataset10.js"></script>
+		<script>
+			var i = 2;
+			var f = 0;
+			var n = 1;
+			var x, y, th;
+			var temp = 1;
+			var count = 1; var plot_flag = 0;
+			var flag, value = 1;
+			$(window).load(function () {
+				// Animate loader off screen
+
+				$("#se-pre-con").animate({
+					top: "-150%"
+				}, 4000); t = 1;
+			});
+			let datasets = [dataset1, dataset1, dataset2, dataset3, dataset3, dataset3, dataset4, dataset4, dataset5];
+			let datasetss = [dataset6, dataset6, dataset7, dataset8, dataset8, dataset8, dataset9, dataset9, dataset10];
+
+			let selectedDatasetIndex = 0;
+
+			function updateDatasetLabel(value) {
+				const datasetLabel = document.getElementById("dataset-label");
+				datasetLabel.innerHTML = "Data Set: " + value;
+			}
+
+
+
+			function plotGraph() {
+				if (f == 1) {
+
+					if (plot_flag == 1) {
+						document.getElementById("myPlot").style.visibility = "visible";
+						document.getElementById("myPlot1").style.visibility = "visible";
+						const selectedDataset = datasets[selectedDatasetIndex];
+						const selectedDataset1 = datasetss[selectedDatasetIndex];
+
+						const xValues = selectedDataset.map((item) => item.x);
+						const yValues = selectedDataset.map((item) => item.y);
+						const x1Values = selectedDataset1.map((item) => item.x);
+						const y1Values = selectedDataset1.map((item) => item.y);
+
+						const trace = {
+							x: xValues,
+							y: yValues,
+							mode: "lines",
+							marker: { color: "red" }
+
+						};
+
+						const trace2 = {
+							x: x1Values,
+							y: y1Values,
+							mode: "lines",
+							marker: { color: "#228b22" }
+
+						};
+						const data = [trace];
+						const data2 = [trace2];
+
+						const layout = {
+							xaxis: { range: [0, 0.01], title: "Time(s)" },
+							yaxis: { range: [0, 12], title: "Voltage (Vc)" },
+							margin:{
+								t:40,
+							}
+						};
+						const layout2 = {
+							xaxis: { range: [0, 0.01], title: "Time(s)" },
+							yaxis: { range: [0, 12], title: "Output Voltage (V)" },
+							margin:{
+								t:50,
+							}
+						};
+
+						Plotly.newPlot("myPlot", data, layout);
+						Plotly.newPlot("myPlot1", data2, layout2);
+					} else alert("Please read alteast an input to plot graph");
+				} else alert("Please turn on the switch");
+
+			}
+
+
+
+			//   document.getElementById("plot-graph").addEventListener("click", plotGraph);
+			// // document.getElementById('stop').addEventListener("input", function (event) {
+			// // 	selectedDatasetIndex = parseInt(event.target.value) - 1;
+			// });
+			function updateval() {
+				var inputValue = document.getElementById('stop').value;
+				selectedDatasetIndex = parseInt(inputValue) - 1;
+			}
+
+
+			// function plot() {
+			// 	if (f == 1) {
+			// 		if (plot_flag == 1) {
+			// 			var ctx = document.getElementById("canvas").getContext('2d');
+			// 			var dist = parseFloat(document.getElementById("stop").value);
+			// 			var val = document.getElementById("stop").value;
+			// 			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			// 			ctx.beginPath();
+			// 			ctx.moveTo(35, 50);
+			// 			ctx.lineTo(35, 210);
+			// 			ctx.stroke();
+			// 			ctx.moveTo(0, 190);
+			// 			ctx.lineTo(600, 190);
+			// 			ctx.stroke();
+			// 			ctx.moveTo(15, 200);
+			// 			/*ctx.quadraticCurveTo(45, 135, 85, 155);
+			// 			ctx.quadraticCurveTo(75, 180, 106,200);
+			// 			ctx.moveTo(106,200);
+			// 			ctx.quadraticCurveTo(155, 135, 191, 155);
+			// 			ctx.quadraticCurveTo(175, 180, 212,200);
+			// 			*/
+			// 			var x = 100 - (dist * 2);
+			// 			for (var i = 0; i < 25; i++) {
+			// 				// ctx.quadraticCurveTo(x - 60 - (dist * 2), 115 - (dist * 2), x - (dist * 2), 135 - (dist * 2));
+			// 				// ctx.quadraticCurveTo(x - 20 - (dist * 2), 160 - (dist * 2), x + 20 - (dist * 2), 160);
+			// 				ctx.quadraticCurveTo(x - 60 - (dist * 2), 150  - (dist * 2), x - (dist * 2), 135 - (dist * 2));
+			// 				ctx.quadraticCurveTo(x  - (dist * 2), 140 - (dist * 2), x + 20 - (dist * 2), 160);
+			// 				ctx.moveTo(x + 20 - (dist * 2), 160);
+			// 				x += 106 - (dist * 2);
+			// 			}
+			// 			ctx.strokeStyle = "#000000";
+			// 			//ctx.fill();
+			// 			ctx.stroke(); 
+			// 			ctx.beginPath();
+			// 			ctx.moveTo(35, 240);
+			// 			ctx.lineTo(35, 390);
+			// 			ctx.strokeStyle = "#000000";
+			// 			ctx.stroke();
+			// 			ctx.moveTo(0, 370);
+			// 			ctx.lineTo(600, 370);
+			// 			ctx.stroke();
+			// 			ctx.beginPath();
+			// 			for (var x = 0; x < 501; x++) {
+			// 				var y = 14 * 0.3 * (squareY((x * val / 20) + 19));
+			// 				ctx.strokeStyle = "green";
+			// 				ctx.lineTo(x, y + 280);
+			// 			}
+			// 			ctx.stroke();
+			// 			ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
+			// 			ctx.beginPath();
+			// 			ctx.moveTo(0, 230);
+			// 			ctx.lineTo(400, 230);
+			// 			ctx.strokeStyle = "black";
+			// 			ctx.stroke();
+			// 			ctx.setLineDash([]); 
+
+			// 			document.getElementById("axis").style.visibility = "visible";
+			// 		} else alert("Please read alteast an input to plot graph");
+
+			// 	} else alert("Please turn on the switch");
+			// }
+			function squareY(x) {
+				return ((x % 30) < 15 ? 15 : 0);
+			}
+			function insert() {
+				if (f == 1) {
+					E = parseFloat(document.getElementById("stop").value);
+					C = parseFloat(0.1);
+					P = parseFloat(3.9);
+					M = E + (2 * P);
+					N = E + P;
+					O = 0.69 * M * C;
+					D = N / M * 100;
+					F = 1 / O;
+					T = 0.69 * N * C;
+					B = T;
+					plot_flag = 1;
+					document.getElementById("y").value = B.toFixed(3);
+					var tab = document.getElementById("mytable");
+
+					if (count > 10) stop();
+					else {
+						var row = tab.insertRow(i);
+						row.id = i++;
+						// Create an empty <tr> element and add it to the 1st position of the table:
+						//var row = table.insertRow(-1);
+						// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+						var cell1 = row.insertCell(0);
+						var cell2 = row.insertCell(1);
+						var cell3 = row.insertCell(2);
+						var cell4 = row.insertCell(3);
+						var cell5 = row.insertCell(4);
+						var cell6 = row.insertCell(5);
+						var cell7 = row.insertCell(6);
+						var cell8 = row.insertCell(7);
+
+
+
+						cell1.innerHTML = count++;
+						cell2.innerHTML = E;
+						cell3.innerHTML = P;
+						cell4.innerHTML = C;
+						cell5.innerHTML = T.toFixed(3);
+						cell6.innerHTML = O.toFixed(3);
+						cell7.innerHTML = D.toFixed(2);
+						cell8.innerHTML = F.toFixed(2);
+					}
+				}
+			}
+			function updateAll() {
+				f = f + temp;
+				temp = f - temp;
+				f = f - temp;
+				display();
+			}
+			function display() {
+				if (f == 0) {
+					document.getElementById("x").value = "";
+					document.getElementById("y").value = "";
+					if (i > 2) for (var q = 2; q < i; q++) document.getElementById(q).remove();
+					plot_flag = 0;
+					// var ctx = document.getElementById("canvas").getContext('2d');
+					// ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+					i = 2; count = 1; l1 = []; l2 = [];
+					document.getElementById("myPlot").style.visibility = "hidden";
+					document.getElementById("myPlot1").style.visibility = "hidden";
+					// document.getElementById("axis").style.visibility = "hidden";
+				}
+				else if (f == 1) {
+					document.getElementById("stop").value = 1;
+				}
+			}
+			function stop() {
+				alert("You cannot read more values");
+				//document.getElementById("stop").disabled="true";
+			}
+
+			function updateTextBox(val) {
+				if (f == 1) {
+					//alert("hello");
+					document.getElementById("x").value = val + "mV";
+					document.getElementById("y").value = "";
+				}
+				else alert("Please turn on the POWER before you read values ");
+			}
+
+		</script>
+
+
+		<div class="calc">
+			<table cellspacing="0" cellpadding="2%" border="2 solid black" id="mytable" class="table table-bordered"
+				style="text-align: center;">
+				<tr style="color:white;background-color:#044ca3">
+					<th colspan=8 align=center>
+						<h6 style="text-align: center;">Experimental Readings</h6>
+					</th>
+				</tr>
+				<tr bgcolor="#ffffff" class="font">
+					<th>S.No</th>
+					<th>Resistance<br>(R<sub>A</sub> K&#8486;)</th>
+					<th>Resistance<br>(R<sub>B</sub> K&#8486;)</th>
+					<th>Capacitance<br>(C &#181;F)</th>
+					<th>Pulse width<br>(&#964;<sub>p</sub> msec)</th>
+					<th>Time constant<br>(T msec)</th>
+					<th>Duty cycle<br>(D %)</th>
+					<th>Freq<br>(F Hz)</th>
+
+				</tr>
+			</table>
+		</div>
+
+		<div>
+			<img style="left: 3em;top: 5em;position: absolute;/* z-index: -1; */" src="./images/setup.png" height="36%"
+				width="54.5%">
+		</div>
+		<div id="led" style="position:absolute;z-index:10;left: 29.6%;top: 32.8%;width: 3%;height: 15%;"></div>
+		<div
+			style="position:absolute;top: 12%;right:7.4%;height: 130px;width: 451px;margin: 19px;border: 2px solid #adb5bd;padding: 20px;text-align: center;">
+			<h6 style="position: absolute;
+			left: -0.5%;
+			top: -34px;
+			color: white;
+			width: 101.3%;
+    text-align: center;border: 2px solid gray;
+    background-color: #044ca3;padding: 6px;">Controls</h6>
+			<b>Power On/Off</b>&ensp;&ensp;&ensp;
+			<input type="checkbox" id="switch" class="checkbox" onchange="updateAll()">
+			<label for="switch" class="toggle" style="padding: 11px;">
+			</label>
+			<br>
+			<br>
+			<tr style="position: absolute;top: 24%;right: 8.5%;">
+				<th><b>Resistance (R<sub>A</sub> K&#8486;)</b></th>
+				<td><input type="range" min="1" max="9" step="2" onchange="insert()" onclick="updateval()"
+						oninput="updateTextBox(this.value)" id="stop" value="0"></td>
+
+			</tr>
+		</div>
+
+		<table cellpadding=5>
+
+
+			<!-- <tr style="position: absolute;top: 20%;right: 8.5%;">
+				<th>Voltage(in V)</th>
+				<td><input type="range" min="1" max="20" step="0.5" onchange="insert()"
+						oninput="updateTextBox(this.value)" id="stop"></td>
+			</tr> -->
+			<tr>
+				<td style="position: absolute;top: 23.39%;left: 4.3%;width: 7.2%;height: 5.9%;display:none;">
+					<input type="text" id="x" style="
+									width: 100%;
+									height: 100%;
+									font-size:20px;
+									border-top-style:hidden;
+									border-right-style: hidden;
+									border-left-style: hidden;
+									border-bottom-style:hidden;
+									background-color:#D3D3D3;
+									color:black;
+									" />
+				</td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td style="    position: absolute;top: 11.6%;left: 47.5%;width: 8.2%;height: 5.99%;display:none;">
+					<input type="text" id="y" style="
+									width: 100%;
+									height: 100%;
+									font-size:18px;
+									border-top-style:hidden;
+									border-right-style: hidden;
+									border-left-style: hidden;
+									border-bottom-style:hidden;
+									background-color:#DCDCDC;
+									color:black;
+									" />
+				</td>
+			</tr>
+		</table>
+		<div id="axis" style="visibility:hidden">
+			<p class="ft">0</p>
+			<p class="snd">V/3</p>
+			<p class="thrd">2V/3</p>
+			<p class="frth"><span style='font-size:25px;'>&#8593;</span></p>
+			<p class="fith">V</p>
+			<p class="yaxis"><span style='font-size:25px;'>&#8594;&nbsp;t</span></p>
+			<p class="scale"><u>&nbsp;Scale :</u><br>&nbsp;on x-axis:&nbsp;1 unit=0.5 ms<br>&nbsp;on y-axis:&nbsp;1
+				unit=2V</p>
+		</div>
+		<div class="graph">
+			<button class="btn btn-danger" onclick="plotGraph()" style="  position: absolute;
+			    top: 166px;
+    width: 100px;
+    right: 1049px;">Plot</button>
+			<div style="position:absolute;bottom: 59.2%;
+			left: -158.5%;"><button class="btn btn-danger" id="button1"
+					onclick="printf()" style="width: 100px;">Print</button><br /></div>
+			<div style="position:absolute;bottom: 59.2%;;left: -130%;"><a href="simulate.html" class="btn btn-warning"
+					style="width: 100px;">Reset</a></div>
+			<div id="gp" style="    position: absolute;
+		            height: 694px;
+			width: 666px;">
+				<center style="background-color:#044ca3;padding: 2px;">
+					<h5 style="color: white;">Graph</h5>
+				</center>
+				<div id="myPlot" style="width: 100%; max-width: 700px;height: 300px;"></div>
+				<div id="myPlot1" style="width: 100%; max-width: 700px;height: 300px;"></div>
+			</div>
+		</div>
+		<!-- <div style="position:absolute;bottom:10%;left:40%;"><button class="button" id="button1" -->
+		<!-- onclick="printf()">Export Data</button><br /></div> -->
+
+	</div><br>
+	<div style="position:relative;    top: 67em;;left:0em;color:white;background-color: #044ca3;width: 96.8%;text-align: center;height: 33px;
+		padding: 5px;">
+		Copyright&copy;2019 | Lab developed by Virtual Labs, IIT Roorkee</div><br>
+	<div class="instruct">
+		<!-- <a id="myBtn" href="#"><img src="./images/help.png" width="30" height="30" alt="Help"></a> -->
+		<div id="myModal" class="modal">
+			<div class="modal-content" style="position: absolute;
+			width: 66%;
+			left: 3%;">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2>Instructions</h2>
+				</div>
+				<div class="modal-body">
+					<br>
+					<left style="font-size:25px">
+						<h3>Instructions:</h3>
+					</left>
+					<ol type="1">
+						<br>
+						<li>Use Toggle ON\OFF to provide power supply to the circuit.</li>
+						<br>
+						<li>Use the <b>Resistance</b> range slider to vary the resistance value.
+						</li>
+						<br>
+						<li>Click on <b>'Plot'</b> button to plot the graph.</li><br>
+						<li>Repeat Step <b>'2'</b> and <b>'3'</b> for further readings.</li>
+					</ol>
+					<!-- <br /><br /><label>Note:</label>
+					<b>Donot move the range slider of "Voltage" without turning on the
+						power</b><br />&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>Donot click "PLOT" without turning the system. Also, donot click "PLOT" button without adding
+						values into table</b> -->
+				</div>
+				<div class="modal-footer">
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <script src="graph.js"></script> -->
+
+	<script>
+		var modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal 
+		btn.onclick = function () {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		function printf() {
+			if (t) document.getElementById("se-pre-con").remove();
+			t = 0;
+			window.print();
+		}
+		/*document.querySelector('#button1').addEventListener('click', function() {
+		html2canvas(document.querySelector('.calc'), {
+			onrendered: function(canvas) {
+				// document.body.appendChild(canvas);
+			  return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+			html2canvas(document.querySelector('#graph'), {
+			onrendered: function(canvas) {
+				// document.body.appendChild(canvas);
+			  return Canvas2Image.saveAsPNG(canvas);
+			}
+		});
+	});*/
+
+	</script>
+</body>
+
+</html>
