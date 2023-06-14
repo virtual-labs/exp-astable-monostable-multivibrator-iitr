@@ -1,23 +1,23 @@
 [{
-	"question": "Multivibrator in which circuit is stable in either state and can be flipped from one state to other by an external trigger pulse is termed as __________",
+	"question": "Multivibrator in which circuit is stable in either state and can be flipped from one state to other by an external trigger pulse is termed as__________.",
 	"answers": {
 		"a": "Astable multivibrator",
 		"b": "Monostable multivibrator",
 		"c": "Bistable multivibrator",
 		"d": "None of the above"
 	},
-	"correctAnswer": "c"
+	"correctAnswer": "b"
 }, {
-	"question": "Popular astable circuit is composed of __________",
+	"question": "Popular astable circuit is composed of__________.",
 	"answers": {
-		"a": "One inverter",
-		"b": "Two inverters",
+		"a": "Two inverters",
+		"b": "One inverter",
 		"c": "One buffer",
 		"d": "Two buffers"
 	},
-	"correctAnswer": "b"
+	"correctAnswer": "a"
 }, {
-	"question": "Circuit which consist of a quasi-stable state is called __________",
+	"question": "Circuit which consist of a quasi-stable state is called__________.",
 	"answers": {
 		"a": "Bistable circuit",
 		"b": "Monostable circuit",
@@ -26,16 +26,16 @@
 	},
 	"correctAnswer": "b"
 }, {
-	"question": "Capacitor discharge interval in monostable circuits is known as __________",
+	"question": "Capacitor discharge interval in monostable circuits is known as__________.",
 	"answers": {
-		"a": "Refresh time",
-		"b": "Recovery time",
-		"c": "Dynamic time",
-		"d": "Static time"
+		"a": "Dynamic time",
+		"b": "Static time",
+		"c": "Refresh time",
+		"d": "Recovery time"
 	},
-	"correctAnswer": "b"
+	"correctAnswer": "d"
 }, {
-	"question": "Multivibrator which can produce a very short pulse or a much longer rectangular shaped waveform whose leading edge rises in time with externally applied trigger pulse is called __________",
+	"question": "Multivibrator which can produce a very short pulse or a much longer rectangular shaped waveform whose leading edge rises in time with externally applied trigger pulse is called__________.",
 	"answers": {
 		"a": "Astable multivibrator",
 		"b": "Bistable multivibrator",
