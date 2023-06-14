@@ -1,19 +1,11 @@
-### 1) ASTABLE MULTIVIBRATOR 
-Step-1) Connect the Supply to input terminals.<br>
-Step-2) Connect output terminals to the CRO input.<br>
-Step-3) Press the "check" button to check whether the connections are correct or not.<br>
-step-4) Vary the resistance using the slider after making sure the connections are correct. Press the calculate button to determine the pulse width(&tau;<sub>P</sub>).<br>
-Step-5) Observe the capacitor and output characteristics for each value of pulse width.<br>
-Step-6) Press "Add to table" to add the quantities to the table.<br>
-Step-7) Repeat steps 4-6 for different values of resistance.<br>
-Step-8) Press the reset button whenever you want to refresh your simulator.<br> <br>
-
-###  2) MONOSTABLE MULTIVIBRATOR
-Step-1) Connect the Supply to input terminals.<br>
-Step-2) Connect output terminals to the CRO input.<br>
-Step-3) Press the "check" button to check whether the connections are correct or not.<br>
-Step-4) Vary the resistance using the slider after making sure the connections are correct. Press the calculate button to determine the time constant(&tau;).<br>
-Step-5) Observe the capacitor and output characteristics for each value of pulse width.<br>
-Step-6) Press "Add to table" to add the quantities to the table.<br>
-Step-7) Repeat steps 4-6 for different values of resistance.<br>
-Step-8) Press the reset button whenever you want to refresh your simulator.<br>
+## Procedure
+<b>STEP 1</b>: Connect the components as mentioned:
+(1-3), (2-4).
+<br>
+<br>
+<b>STEP 2</b>: Click on <b>'Check'</b> button to check the connections. If connected connections are wrong, Make the right connection as per given instruction.
+<br><br>
+<b>STEP 3</b>: If connections are right, Click on the<b>'Start'</b> button to perform the experiment.<br><br>
+<b>STEP 4</b>: Toggle On/Off button to control the power to the system.<br><br>
+<b>STEP 5</b>: Move the <b>'Voltage'</b> range slider to fetch values into table.<br><br>
+<b>STEP 6</b>: Click on <b>'Plot'</b> button to plot the graph.<br><br>

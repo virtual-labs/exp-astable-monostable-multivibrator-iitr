@@ -8,13 +8,45 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-body {font-family: Arial;
-background-color: #ECEFF4;}
-
-
+        body {
+            font-family: Arial;
+            background: linear-gradient(45deg,#EE7752,#E73C7E,#23A6D4,#23D5BE,#228B22);
+            background-size: 400% 400%;
+            position:relative;
+            animation: change 10s ease-in-out infinite;/*for single color*/
+        }
+        
+        a{
+            background:rgb(0,0,0,0.7);
+            color:white;
+            position:relative;
+            padding:20px 30px;
+            text-decoration: none;
+            border-radius:4px;
+        }
+        a:hover{
+            background: rgb(0,0,0,0.5);
+            text-decoration: none;
+            color:white;
+        }
+        a:active{
+            background: rgb(0,0,0,0.6);
+            text-decoration: none;
+            color:white;
+        }
+        a:visited{
+            background: rgb(0,0,0,0.6);
+            text-decoration: none;
+            color:white;
+        }
+        a:link{
+            text-decoration: none;
+        }
+        h1{
+            color:white;
+        }
 </style>
     </head>
-
     <body >
 
      
@@ -23,25 +55,17 @@ background-color: #ECEFF4;}
         <!-- Content Header (Page header) -->
         <section class="content-header">
 
-            <h1 align="center">To study astable and monostable multivibrator using IC 555.
+            <h1 align="center">Monostable and Astable Multivibrators.
         </h1><br><br>
             <!-- Write your experiment name -->
             <h1 align="center">Simulation
-        </h1>
-         <br><br>
-      
-
-<center>          
-          <a style="width:150px; height:50px;" class="btn btn-primary" href="test/index.html" target="_blank">Astable <br>multivibrator</a>&nbsp;&nbsp;&nbsp;
-          
-           
-          <a style="width:150px; height:50px;" class="btn btn-primary" href="test1/index.html" target="_blank">Monostable <br>multivibrator</a>
- </center>        
-             
-  
-
-
-      
+        </h1><br><br>
+          <center>
+            <a style="width:auto; height:50px;padding-top: 14px;" class="btn btn-primary" href="mono/simulate.html" target="_blank">Monostable Multivibrator</a> &nbsp;&nbsp;&nbsp;
+			<a style="width:auto; height:50px;padding-top: 14px;" class="btn btn-primary" href="astable/simulate.html" target="_blank">Astable Multivibrator</a>
+            </center> 
+          </section>
+        </div>
     </body>
 </html>
 
