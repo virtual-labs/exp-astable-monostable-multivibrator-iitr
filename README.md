@@ -6,7 +6,7 @@
 <b>Discipline | <b> Electronics and Communications
 :--|:--|
 <b> Lab | <b> Analog Electronics
-<b> Experiment|     <b> 8. Astable and monostable multivibrator using IC 555.
+<b> Experiment|     <b> 7. Astable and monostable multivibrator using IC 555.
 <h5> About the Experiment : </h5> <br>
 
 This experiment is to study astable and monostable multivibrator using IC 555.
