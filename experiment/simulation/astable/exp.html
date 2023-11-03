@@ -266,6 +266,19 @@
 				}
 			}
 			function updateAll() {
+
+                   let toggle = 1;
+
+				   if(toggle ===1 ) {
+
+					document.getElementById('stop').disabled=0;
+				   }
+				   else {
+
+					document.getElementById('stop').disabled =1;
+				   }
+
+
 				f = f + temp;
 				temp = f - temp;
 				f = f - temp;
@@ -291,16 +304,22 @@
 			}
 			function stop() {
 				alert("You cannot read more values");
-				//document.getElementById("stop").disabled="true";
+				document.getElementById("stop").disabled="true";
 			}
 
 			function updateTextBox(val) {
+
 				if (f == 1) {
+					
 					//alert("hello");
 					document.getElementById("x").value = val + "mV";
 					document.getElementById("y").value = "";
 				}
-				else alert("Please turn on the POWER before you read values ");
+
+				else if(f==0) {
+
+					document.getElementById('stop').disabled =true;
+				}
 			}
 
 		</script>
@@ -350,7 +369,7 @@
 			<br>
 			<tr style="position: absolute;top: 24%;right: 8.5%;">
 				<th><b>Resistance (R<sub>A</sub> K&#8486;)</b></th>
-				<td><input type="range" min="1" max="9" step="2" onchange="insert()" onclick="updateval()"
+				<td><input type="range" min="1" max="9" step="2" disabled="1" onchange="insert()" onclick="updateval()"
 						oninput="updateTextBox(this.value)" id="stop" value="0"></td>
 
 			</tr>
